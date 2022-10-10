@@ -64,8 +64,8 @@ const Login = () => {
       >
         {({ errors, touched, handleChange, handleSubmit, handleBlur }) => (
           <Form className="login-form" {...layout}>
-            <div className="login-title">Login</div>
             {loading && <Loading />}
+            <div className="login-title">Login</div>
             <div className="inputs">
               <Form.Item
                 validateStatus={
