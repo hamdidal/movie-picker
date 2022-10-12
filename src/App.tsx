@@ -7,29 +7,21 @@ import { Home } from "./pages/Home";
 import Register from "./pages/Register";
 import { Details } from "./pages/Details";
 import { List } from "./pages/List";
-import { GlobalContextProvider } from "./context";
-import Auth from "./components/Auth";
+import Auth from "./Auth";
 
 function App() {
   return (
-    <div className="App">
-      <GlobalContextProvider>
+    <Auth>
+      <div className="App">
         <Routes>
-          <Route
-            path="/login"
-            element={
-              <Auth>
-                <Login />
-              </Auth>
-            }
-          />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/detailspage" element={<Details />} />
-          <Route path="/movielist" element={<List />} />
+          <Route path="/detailspage/:id" element={<Details />} />
+          <Route path="/list" element={<List />} />
         </Routes>
-      </GlobalContextProvider>
-    </div>
+      </div>
+    </Auth>
   );
 }
 

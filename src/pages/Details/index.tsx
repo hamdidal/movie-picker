@@ -1,7 +1,10 @@
 import React from 'react'
+import { Header } from '../../components/Header'
 
 export const Details = () => {
   return (
-    <div>Details</div>
+    <div>
+      <Header/>
+    </div>
   )
 }

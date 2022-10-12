@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import { Form, notification } from "antd";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../services/auth";
+import { register, setUser } from "../../services/auth";
 import Loading from "../../components/Loading";
 import { Formik } from "formik";
 import * as YUP from 'yup'
@@ -36,10 +36,14 @@ const Register: React.FC = () => {
     }
   
     const toRegister = async (values:any) => {
-      setLoading(true)
-      try {
-        await register(values.email, values.password)
-        navigate('/')
+      setLoading(true);
+    try {
+      const res = await register(values.email, values.password);
+      console.log("new user", res.user);
+      if (res.user != null) {
+        setUser(res.user);
+        navigate("/");
+      }
       } catch (error) {
         notification.open({
           message: 'Register Error',

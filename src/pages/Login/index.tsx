@@ -3,10 +3,9 @@ import "./Login.css";
 import { Form, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
-import { login } from "../../services/auth";
+import { login, setUser } from "../../services/auth";
 import { Formik } from "formik";
-import * as YUP from 'yup'
-
+import * as YUP from "yup";
 
 const initialValues = {
   email: "",
@@ -37,11 +36,14 @@ const Login = () => {
   };
 
   const toLogin = async (values: any) => {
-    debugger
     setLoading(true);
     try {
-      login(values.email, values.password);
-      navigate("/");
+      const res = await login(values.email, values.password);
+      console.log("logged user", res.user);
+      if (res.user != null) {
+        setUser(res.user);
+        navigate("/");
+      }
     } catch (e) {
       console.log(e);
       notification.open({
@@ -118,4 +120,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login
+export default Login;

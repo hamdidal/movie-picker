@@ -1,13 +1,20 @@
 import { LoginOutlined } from "@ant-design/icons";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../services/auth";
 import "./Header.css";
 
 export const Header = () => {
 
+  const location = useLocation
+
   const navigate = useNavigate()
 
+  const toHome = () => {
+    if (!location.name.includes('/')) {
+      navigate('/')
+  }
+  }
   const toOut = (values: any) => {
       logout()
       navigate('/login')
@@ -16,11 +23,10 @@ export const Header = () => {
 
   return (
     <div className="home-div">
-      <div className="title">moviepicker</div>
+      <div className="title" onClick={toHome}>moviepicker</div>
       <div>
         <button className="out-btn-home" onClick={toOut}>
           <LoginOutlined className="out-icon" />
-          Logout
         </button>
       </div>
     </div>

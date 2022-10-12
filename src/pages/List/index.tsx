@@ -1,7 +1,11 @@
 import React from 'react'
+import { Header } from '../../components/Header'
 
 export const List = () => {
+
   return (
-    <div>List</div>
+    <div className='list-page'>
+      <Header/>
+    </div>
   )
 }
