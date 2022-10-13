@@ -18,7 +18,6 @@ export const Header = () => {
   const toOut = (values: any) => {
       logout()
       navigate('/login')
-      console.log(toOut)
   }
 
   return (

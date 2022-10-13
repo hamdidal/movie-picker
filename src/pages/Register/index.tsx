@@ -39,7 +39,6 @@ const Register: React.FC = () => {
       setLoading(true);
     try {
       const res = await register(values.email, values.password);
-      console.log("new user", res.user);
       if (res.user != null) {
         setUser(res.user);
         navigate("/");
@@ -52,7 +51,6 @@ const Register: React.FC = () => {
         })
       }
         setLoading(false)
-        console.log(register(values.email, values.password))
       }
       return (
     <div className="container-register">

@@ -39,13 +39,11 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(values.email, values.password);
-      console.log("logged user", res.user);
       if (res.user != null) {
         setUser(res.user);
         navigate("/");
       }
     } catch (e) {
-      console.log(e);
       notification.open({
         message: "Login Error",
         type: "error",

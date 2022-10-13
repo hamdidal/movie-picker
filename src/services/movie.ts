@@ -9,3 +9,8 @@ export async function searchMovie(query: any) {
   });
   return response;
 }
+
+export async function findMovieBydId(movie_id:any) {
+  const response = await HttpClient.get(`/movie/${movie_id}`, {params:{}})
+  return response;
+}
