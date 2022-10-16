@@ -25,6 +25,7 @@ export const login = async (email: string, password: string) => {
 
 export const logout = async () => {
   const user = getAuth();
+  localStorage.clear()
   return await signOut(user);
 };
 

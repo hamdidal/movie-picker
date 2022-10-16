@@ -1,41 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { Header } from '../../components/Header'
-import { SearchResult } from '../../components/SearchResult'
-import { MovieProps } from '../../models/movies'
-import { searchMovie } from '../../services/movie'
-import "./List.css"
-import Loading from '../../components/Loading'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Header } from "../../components/Header";
+import { SearchResult } from "../../components/SearchResult";
+import { MovieProps } from "../../models/movies";
+import { searchMovie } from "../../services/Movie/movie";
+import "./List.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const List = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [movies, setMovies] = useState([] as any[]);
+  const [page, setPage] = useState(1);
 
-  const {search} = useParams()
-  console.log(search)
+  const { search } = useParams();
+  const fetchMoreData = () => {
+    setPage(page + 1);
+    setTimeout(() => {
+      movies.concat(Array.from({ length: 20 }));
+    });
+  };
 
   useEffect(() => {
     const getData = async () => {
-      setLoading(true)
-      const data = await searchMovie(search);
-      setLoading(false)
-      setMovies(data.results);
+      const data = await searchMovie({ query: search, page });
+      setMovies([...movies, ...data.results]);
     };
-    setMovies([]);
+    setMovies([movies]);
     getData();
-    console.log("s",search)
-  }, [search]);
-  
+  }, [page]);
 
   return (
-    <div className='list-page'>
-      {loading && <Loading/>}
-      <Header/>
-      <div className='movie-list'>
-      {movies.map((result: MovieProps) => {
-              return <SearchResult result={result} key={result.id} />;
-            })}
+    <div className="list-page">
+      <Header />
+      <div className="movie-list">
+        <InfiniteScroll
+          dataLength={movies.length}
+          next={fetchMoreData}
+          hasMore={true}
+          loader={<h3>Loading</h3>}
+        >
+          {movies.map((result: MovieProps, index) => {
+            return <SearchResult result={result} key={index} />;
+          })}
+        </InfiniteScroll>
       </div>
     </div>
-  )
-}
+  );
+};

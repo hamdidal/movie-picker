@@ -11,3 +11,14 @@ export interface MovieProps {
 export interface FindMovieProps{
     id: number
 }
+
+export interface CreateCommentModel{
+  commentBody:string;
+  userId: string;
+  commentId: string;
+  movieId: number;
+}
+
+export interface SendEmailProps {
+  title: string
+}

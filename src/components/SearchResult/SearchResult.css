@@ -33,6 +33,7 @@
     font-family: 'Roboto', sans-serif;
     background-size: cover;
     overflow: hidden;
+    gap: -40px;    
 }
 
 

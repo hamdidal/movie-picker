@@ -1,0 +1,30 @@
+.send-email{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 200px;
+    flex-direction: column;    
+}
+
+.send-email-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 200px;
+    gap: 30px;
+}
+
+.send-email-form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 200px;
+    gap: 30px;
+}

@@ -126,4 +126,5 @@
     background-color: #2f3640;
     color: white;
     transition: 0.3s;
+    cursor: pointer;
 }

@@ -29,7 +29,7 @@ export const GlobalContextProvider = (props: Props) => {
 
   useEffect(() => {
     if (!location.pathname.includes("register")) {
-      if (user == null) {
+      if (user == null && location.pathname.includes("/register")) {
         navigate("/login");
       } else if (location.pathname === "/login") {
         navigate("/");

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { SearchOutlined } from "@ant-design/icons";
 import { Header } from "../../components/Header";
-import { searchMovie } from "../../services/movie";
+import { searchMovie } from "../../services/Movie/movie";
 import { SearchResult } from "../../components/SearchResult";
 import { MovieProps } from "../../models/movies";
 import { useNavigate } from "react-router-dom";
@@ -19,13 +19,12 @@ export const Home = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await searchMovie(`${search}`);
+      const data = await searchMovie({ query: search, page: 1 });
       setMovies(data.results);
       setTimeout(() => {}, 1000);
     };
     setMovies([]);
     getData();
-    console.log(search);
   }, [search]);
 
   const toList = (search: string) => {
