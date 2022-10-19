@@ -11,9 +11,9 @@ class HttpClient {
     this.axios = axios.create({
       baseURL: this.baseUrl,
       headers: {
-        "Authorization": "Bearer " + this.token,
+        Authorization: "Bearer " + this.token,
         "Content-Type": "application/json",
-        "charset": "utf-8",
+        charset: "utf-8",
       },
     });
   }

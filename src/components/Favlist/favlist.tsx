@@ -22,14 +22,13 @@ export const Favlist = (userId: any) => {
     getFav();
   }, [userId]);
 
-
   if (loading) return <div>loading...</div>;
   return (
     <div>
       {favs.map((favs: FavlistPropsModel, index) => {
         return (
-          <div key={index} style={{ color: "white" }}>
-            <Card.Grid> {favs.movieTitle} </Card.Grid>
+          <div key={index}>
+            <div> {favs.movieTitle} </div>
           </div>
         );
       })}

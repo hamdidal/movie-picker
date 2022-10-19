@@ -1,7 +1,7 @@
 .fav-button{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     width: 8%;
-    background:#CC6666;
+    background:#102770;
     border-radius:5px;
     border:0;
     cursor:pointer;
@@ -15,5 +15,27 @@
 }
 
 .fav-button:hover{
-    background:#CC4949;
+    background:#ffeba7;
+    color: #102770;
+}
+
+@media screen and (max-width: 600px){
+
+.fav-button{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    width: 20%;
+    background:#102770;
+    border-radius:5px;
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-size:12px;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.3s;
+    margin-top:-4px;
+    font-weight:700;
+    margin-right: -35px;
+}
+
 }

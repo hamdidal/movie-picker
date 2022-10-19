@@ -6,7 +6,7 @@ import "./Details.css";
 import { SendEmail } from "../../components/SendEmail";
 import { CommentForm } from "../../components/Comments";
 import CommentList from "../../components/Comments/list";
-import { FavoriteMovie } from "../../components/Favlist";
+import { FavButton } from "../../components/Favlist/favButton";
 
 export const Details = () => {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
@@ -21,7 +21,7 @@ export const Details = () => {
     poster_path: "" || null,
     production_companies: {
       name: "",
-      id: "",
+      id: 0,
       logo_path: "",
       origin_country: "",
     },
@@ -29,11 +29,12 @@ export const Details = () => {
     vote_average: "",
   });
 
-  const id = useParams();
+  const release_year = movie.release_date.slice(0, 4);
+  const { id } = useParams();
 
   useEffect(() => {
     const getData = async () => {
-      const data = await findMovieBydId(id.id);
+      const data = await findMovieBydId(id);
       setMovie(data);
     };
     getData();
@@ -59,23 +60,22 @@ export const Details = () => {
               Original Title {movie.original_title}
             </div>
             <div className="details-overview">{movie.overview}</div>
-          </div>
-          <div className="movie-container-right">
-            <div className="details-date">
-              Release Date: {movie.release_date}
-            </div>
+            <div className="details-date">Release Date: {release_year}</div>
             <div className="details-rate">IMdB Rate: {movie.vote_average}</div>
           </div>
         </div>
         <div className="fav-box">
-          <FavoriteMovie slugId={id} />
+          <FavButton
+            movieId={+(id as unknown as string)}
+            movieTitle={movie.title}
+          />
         </div>
         <div className="email-box">
           <SendEmail title={movie.title} />
         </div>
         <div className="comment-box">
-          <CommentForm slugId={id} />
-          <CommentList slugId={id} />
+          <CommentForm movieId={+(id as unknown as string)} />
+          <CommentList movieId={+(id as unknown as string)} />
         </div>
       </div>
     </>

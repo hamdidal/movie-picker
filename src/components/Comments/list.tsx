@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { CreateCommentModel } from "../../models/movies";
 import { getCommentForMovieId } from "../../services/Movie/comment";
-import "./CommentList.css"
+import "./CommentList.css";
 
-const CommentList = ({ slugId }: any) => {
+interface Props {
+  movieId: number;
+}
+
+const CommentList = (props: Props) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getComment = async () => {
       try {
-        const response = await getCommentForMovieId(slugId.id);
+        const response = await getCommentForMovieId(props.movieId);
         let _comments: any = [];
         if (response) {
           _comments = response;
@@ -20,7 +24,7 @@ const CommentList = ({ slugId }: any) => {
       } catch (error) {}
     };
     getComment();
-  }, [slugId.id]);
+  }, [props.movieId]);
 
   if (loading) return <div>loading...</div>;
   return (
@@ -28,7 +32,10 @@ const CommentList = ({ slugId }: any) => {
       {comments.map((comment: CreateCommentModel, index) => {
         return (
           <div key={index} className="list-form">
-            <div className="comment-user"><span>USER-</span>{comment.userId}</div>
+            <div className="comment-user">
+              <span>USER-</span>
+              {comment.userId}
+            </div>
             <div className="comment-body"> {comment.commentBody}</div>
           </div>
         );

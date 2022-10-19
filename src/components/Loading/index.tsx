@@ -1,6 +1,6 @@
-import React from 'react'
-import { Blocks } from 'react-loader-spinner'
-import './Loading.css'
+import React from "react";
+import { Blocks } from "react-loader-spinner";
+import "./Loading.css";
 
 function Loading() {
   return (
@@ -14,7 +14,7 @@ function Loading() {
         wrapperClass="blocks-wrapper"
       />
     </div>
-  )
+  );
 }
 
-export default Loading
+export default Loading;

@@ -57,7 +57,7 @@ textarea {
 .feedback-button{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     width: 100%;
-    background:#CC6666;
+    background:#102770;
     border-radius:5px;
     border:0;
     cursor:pointer;
@@ -71,5 +71,6 @@ textarea {
 }
 
 .feedback-button:hover{
-    background:#CC4949;
+    background:#ffeba7;
+    color: #102770;
 }

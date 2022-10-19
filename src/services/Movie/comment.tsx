@@ -1,4 +1,12 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { CreateCommentModel, FavlistPropsModel } from "../../models/movies";
 import { db } from "../Firebase";
 
@@ -14,7 +22,6 @@ export const getCommentForMovieId = async (movieId: number) => {
   const q = query(collection(db, "comment"), where("movieId", "==", movieId));
 
   const querySnapshot = await getDocs(q);
-  console.log("comment", querySnapshot);
   const comments: CreateCommentModel[] = [];
   querySnapshot.forEach((doc) => {
     const docData = doc.data();
@@ -29,7 +36,7 @@ export const getCommentForMovieId = async (movieId: number) => {
   return comments;
 };
 
-export const createFavlist = async (fav: FavlistPropsModel) => {
+export const createFav = async (fav: FavlistPropsModel) => {
   const ref = collection(db, "favlist");
   const createdFavList = await addDoc(ref, fav);
   return createdFavList.id;
@@ -53,4 +60,30 @@ export const getFavlistForUserId = async (userId: any) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const isFavoriteByMovieAndUserId = async (
+  movieId: number,
+  userId: string
+): Promise<any> => {
+  const q = query(
+    collection(db, "favlist"),
+    where("movieId", "==", movieId),
+    where("userId", "==", userId)
+  );
+  const res: any[] = [];
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    res.push({
+      id: doc.id,
+      ...data,
+    });
+  });
+  return res[0];
+};
+
+export const deleteFav = async (id: string) => {
+  const deletedFav = await deleteDoc(doc(db, "favlist", id));
+  return deletedFav;
 };

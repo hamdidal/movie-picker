@@ -1,4 +1,4 @@
 export interface UserModel {
-    userName?: string
-    userId: string
-  }
+  userName?: string;
+  userId: string;
+}

@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { getUser } from "../../services/FirebaseAuth";
 import { createComment } from "../../services/Movie/comment";
-import "./Comments.css"
+import "./Comments.css";
 
-export const CommentForm = ({ slugId }: any) => {
+interface Props {
+  movieId: number;
+}
+
+export const CommentForm = (props: Props) => {
   const [movieId, setMovieId] = useState(0);
   const [commentBody, setCommentBody] = useState("");
   const [userId, setUserId] = useState("");
@@ -12,9 +16,9 @@ export const CommentForm = ({ slugId }: any) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setMovieId(slugId.id);
+    setMovieId(props.movieId);
     setUserId(getUser()?.uid || "");
-  }, [movieId, slugId, userId]);
+  }, [movieId, props.movieId, userId]);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -45,9 +49,9 @@ export const CommentForm = ({ slugId }: any) => {
         <form onSubmit={submitHandler}>
           <div className="comment-form">
             <textarea
+              className="comment-textarea"
               onChange={(e) => setCommentBody(e.target.value)}
               placeholder="write a comment"
-              className="comment-textarea"
             ></textarea>
             <button disabled={loading} type="submit" className="comment-button">
               {loading ? "Sending..." : "Send It"}

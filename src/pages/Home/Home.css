@@ -1,4 +1,4 @@
-.home-page {
+.home-page{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-.search-div {
+.search-div{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
     margin-top: 5%;
 }
 
-.search-box {
+.search-box{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
     padding: 10px;
 }
 
-.search-box:hover > .search-input {
+.search-box:hover > .search-input{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +34,7 @@
     padding-left: 32px;
 }
 
-.search-input:focus {
+.search-input:focus{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,7 +43,7 @@
     padding-left: 32px;
 }
 
-.search-box:hover > .search-button {
+.search-box:hover > .search-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +51,7 @@
     color : #2f3640;
 }
 
-.search-button {
+.search-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +68,7 @@
     transition: 0.4s;
 }
 
-.search-input {
+.search-input{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +113,7 @@
     visibility: hidden;
 }
 
-.more-button {
+.more-button{
     width: 600px;
     height: 50px;
     border: 0;
@@ -127,4 +127,34 @@
     color: white;
     transition: 0.3s;
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+
+.search-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    padding-left: 32px;
+}
+
+.search-input:not(:placeholder-shown){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    padding-left: 32px;
+}
+
+.search-box:hover > .search-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    padding-left: 32px;
+}
 }

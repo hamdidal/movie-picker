@@ -6,11 +6,9 @@ import { MovieProps } from "../../models/movies";
 import { searchMovie } from "../../services/Movie/movie";
 import "./List.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getUser } from "../../services/FirebaseAuth";
 
 export const List = () => {
   const [movies, setMovies] = useState([] as any[]);
-  const [userId, setUserId] = useState("");
   const [page, setPage] = useState(1);
 
   const { search } = useParams();
@@ -22,7 +20,6 @@ export const List = () => {
 
   useEffect(() => {
     const getData = async () => {
-      setUserId(getUser()?.uid || "");
       const data = await searchMovie({ query: search, page: 1 });
       setMovies([...data.results]);
     };

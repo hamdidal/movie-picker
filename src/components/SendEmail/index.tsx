@@ -5,7 +5,7 @@ import axios from "axios";
 import "./SendEmail.css";
 import { SendEmailProps } from "../../models/movies";
 
-export const SendEmail = ({title}:SendEmailProps) => {
+export const SendEmail = ({ title }: SendEmailProps) => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
@@ -61,7 +61,11 @@ export const SendEmail = ({title}:SendEmailProps) => {
               className="feedback-input"
               defaultValue={title}
             ></textarea>
-            <button disabled={loading} type="submit" className="feedback-button">
+            <button
+              disabled={loading}
+              type="submit"
+              className="feedback-button"
+            >
               {loading ? "Sending..." : "Submit"}
             </button>
           </div>
@@ -69,4 +73,4 @@ export const SendEmail = ({title}:SendEmailProps) => {
       </div>
     </div>
   );
-}
+};

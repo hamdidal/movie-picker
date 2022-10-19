@@ -6,6 +6,7 @@ import { searchMovie } from "../../services/Movie/movie";
 import { SearchResult } from "../../components/SearchResult";
 import { MovieProps } from "../../models/movies";
 import { useNavigate } from "react-router-dom";
+import { FavModal } from "../../components/Favlist/favModal";
 
 export const Home = () => {
   const [search, setSearch] = useState("");
@@ -34,6 +35,7 @@ export const Home = () => {
   return (
     <div className="home-page">
       <Header />
+      <FavModal />
       <div className="search-div">
         <div className="search-box">
           <button className="search-button">

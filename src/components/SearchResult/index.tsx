@@ -13,11 +13,11 @@ export const SearchResult = ({ result }: any) => {
   };
 
   const getImage = (result: any) =>
-    `${BASE_URL}${result.poster_path || result.backdrop_path || notFound}` 
+    `${BASE_URL}${result.poster_path || result.backdrop_path || notFound}`;
 
   return (
     <div
-      onDoubleClick={() => toMovie(result.id)}
+      onClick={() => toMovie(result.id)}
       className="shortlist-container"
       style={{ backgroundImage: `url(${getImage(result)})` }}
     >
