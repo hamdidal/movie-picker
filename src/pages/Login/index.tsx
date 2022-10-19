@@ -3,7 +3,7 @@ import "./Login.css";
 import { Form, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
-import { login, setUser } from "../../services/auth";
+import { login, setUser } from "../../services/FirebaseAuth";
 import { Formik } from "formik";
 import * as YUP from "yup";
 

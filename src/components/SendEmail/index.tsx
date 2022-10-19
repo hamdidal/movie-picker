@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import "./sendEmail.css";
+import "./SendEmail.css";
 import { SendEmailProps } from "../../models/movies";
 
 export const SendEmail = ({title}:SendEmailProps) => {
@@ -43,13 +43,14 @@ export const SendEmail = ({title}:SendEmailProps) => {
             <input
               name="email"
               placeholder="Email"
+              className="feedback-input"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
             ></input>
-            <label>Subject</label>
             <input
               id="subject"
               type="text"
+              className="feedback-input"
               placeholder="Subject"
               onChange={(e) => setSubject(e.target.value)}
             ></input>
@@ -57,9 +58,10 @@ export const SendEmail = ({title}:SendEmailProps) => {
               id="message"
               onChange={(e) => setMessage(e.target.value)}
               placeholder="message"
+              className="feedback-input"
               defaultValue={title}
             ></textarea>
-            <button disabled={loading} type="submit">
+            <button disabled={loading} type="submit" className="feedback-button">
               {loading ? "Sending..." : "Submit"}
             </button>
           </div>

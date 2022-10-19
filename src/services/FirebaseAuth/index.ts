@@ -6,7 +6,7 @@ import {
   signOut,
   User,
 } from "firebase/auth";
-import { app } from "../firebase";
+import { app } from "../Firebase";
 
 export const setUser = (user: User) => {
   localStorage.setItem("user", JSON.stringify(user));
@@ -25,7 +25,7 @@ export const login = async (email: string, password: string) => {
 
 export const logout = async () => {
   const user = getAuth();
-  localStorage.clear()
+  localStorage.clear();
   return await signOut(user);
 };
 

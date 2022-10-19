@@ -22,3 +22,9 @@ export interface CreateCommentModel{
 export interface SendEmailProps {
   title: string
 }
+
+export interface FavlistPropsModel{
+  userId: string,
+  movieTitle: string,
+  movieId: number,
+}

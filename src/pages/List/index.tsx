@@ -6,27 +6,28 @@ import { MovieProps } from "../../models/movies";
 import { searchMovie } from "../../services/Movie/movie";
 import "./List.css";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { getUser } from "../../services/FirebaseAuth";
 
 export const List = () => {
   const [movies, setMovies] = useState([] as any[]);
+  const [userId, setUserId] = useState("");
   const [page, setPage] = useState(1);
 
   const { search } = useParams();
-  const fetchMoreData = () => {
+  const fetchMoreData = async () => {
     setPage(page + 1);
-    setTimeout(() => {
-      movies.concat(Array.from({ length: 20 }));
-    });
+    const data = await searchMovie({ query: search, page });
+    setMovies([...movies, ...data.results]);
   };
 
   useEffect(() => {
     const getData = async () => {
-      const data = await searchMovie({ query: search, page });
-      setMovies([...movies, ...data.results]);
+      setUserId(getUser()?.uid || "");
+      const data = await searchMovie({ query: search, page: 1 });
+      setMovies([...data.results]);
     };
-    setMovies([movies]);
     getData();
-  }, [page]);
+  }, [search]);
 
   return (
     <div className="list-page">
@@ -36,7 +37,7 @@ export const List = () => {
           dataLength={movies.length}
           next={fetchMoreData}
           hasMore={true}
-          loader={<h3>Loading</h3>}
+          loader={false}
         >
           {movies.map((result: MovieProps, index) => {
             return <SearchResult result={result} key={index} />;

@@ -4,12 +4,14 @@ import { Header } from "../../components/Header";
 import { findMovieBydId } from "../../services/Movie/movie";
 import "./Details.css";
 import { SendEmail } from "../../components/SendEmail";
-import {CommentForm} from "../../components/Comments";
+import { CommentForm } from "../../components/Comments";
 import CommentList from "../../components/Comments/list";
+import { FavoriteMovie } from "../../components/Favlist";
 
 export const Details = () => {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
 
+  const notFound = "wwemzKWzjKYJFfCeiB57q3r4Bcm.svg";
   const [movie, setMovie] = useState({
     title: "",
     original_language: "",
@@ -43,10 +45,9 @@ export const Details = () => {
       <div className="details-container">
         <div className="details-poster-div">
           <img
-            src={
-              `${BASE_URL}${movie.backdrop_path}` ||
-              "https://lightning.od-cdn.com/static/img/no-cover_en_US.a8920a302274ea37cfaecb7cf318890e.jpg"
-            }
+            src={`${BASE_URL}${
+              movie.backdrop_path || movie.poster_path || notFound
+            }`}
             alt={"movie-shorlist-img"}
             className="details-poster"
           ></img>
@@ -66,9 +67,16 @@ export const Details = () => {
             <div className="details-rate">IMdB Rate: {movie.vote_average}</div>
           </div>
         </div>
-        <SendEmail title={movie.title} />
-        <CommentForm slugId={id} />
-        <CommentList/>
+        <div className="fav-box">
+          <FavoriteMovie slugId={id} />
+        </div>
+        <div className="email-box">
+          <SendEmail title={movie.title} />
+        </div>
+        <div className="comment-box">
+          <CommentForm slugId={id} />
+          <CommentList slugId={id} />
+        </div>
       </div>
     </>
   );

@@ -5,3 +5,31 @@
     justify-content: center;
     padding: 30px;
 }
+
+.card-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: Roboto;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin-bottom: 10px;
+    background-color: antiquewhite;
+    color: black;
+    gap: 20px;
+}
+
+.card-list-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    gap: 20px;
+}

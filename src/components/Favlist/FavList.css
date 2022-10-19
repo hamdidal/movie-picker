@@ -1,0 +1,19 @@
+.fav-button{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    width: 8%;
+    background:#CC6666;
+    border-radius:5px;
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-size:16px;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.3s;
+    margin-top:-4px;
+    font-weight:700;
+}
+
+.fav-button:hover{
+    background:#CC4949;
+}

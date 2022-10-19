@@ -4,6 +4,7 @@ import "./SearchResult.css";
 
 export const SearchResult = ({ result }: any) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
+  const notFound = "kwwemzKWzjKYJFfCeiB57q3r4Bcm.svg";
 
   const navigate = useNavigate();
 
@@ -12,8 +13,7 @@ export const SearchResult = ({ result }: any) => {
   };
 
   const getImage = (result: any) =>
-    `${BASE_URL}${result.poster_path || result.backdrop_path}` ||
-    "https://lightning.od-cdn.com/static/img/no-cover_en_US.a8920a302274ea37cfaecb7cf318890e.jpg";
+    `${BASE_URL}${result.poster_path || result.backdrop_path || notFound}` 
 
   return (
     <div
