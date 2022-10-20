@@ -8,6 +8,7 @@
 }
 
 .title{
+    display: flex;
     font-size: 15vh;
     text-align: center;
     color: #fcedd8;
@@ -230,13 +231,13 @@
 }
 
 .title{
-  font-size: 10vh;
+  font-size: 7vh;
   text-align: center;
   color: #fcedd8;
   background: #d52e3f;
   font-family: "helvetica";
   font-weight: 700;
-  margin-left: 350px;
+  margin-left: 380px;
   text-shadow: 
           5px  5px  0px #eb452b, 
           10px 10px 0px #efa032, 
